@@ -7,8 +7,22 @@
 install.packages("tidyverse")
 install.packages("readxl")
 install.packages("sf")
+
 #restart as needed - after restart the code will need to be run again
 
-source("Import.R") #also cleans and merges data
+source("Import_V2.R") #Imports all the data we need for this project
+
+source("Clean.R") #Cleans the data to make it is ready for merger
+
+source("Merge.R") #Merges all the clean data into one table
+
+
 #This will give you a combined data file with all the variables needed
 head(Combined_Data) #to check this
+
+#You can now save this data as a CSV for future use
+write.csv(Combined_Data, "data/Combined_Data.csv", row.names = FALSE)
+
+#Time for analysis and visualisation!
+
+source("Analysis.R") #Time to analyse the data

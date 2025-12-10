@@ -1,8 +1,6 @@
-#This file is designed to import all the relevant libraries and data
-#into your environment
+#This file is designed to import all the relevant libraries and data into your environment
 
-
-#Now load the packages
+#First load the necessary packages
 library(tidyverse)
 library(readxl)
 library(sf)
@@ -52,6 +50,6 @@ Combined_Data <- UK_Income_2021 %>%
   inner_join(UK_Education_2021, by = "LAD code")
 
 #Now all the data is in one nice clean sheet we can remove the rest
-rm(UK_Income, UK_Income_2021, UK_energy, UK_energy_2021, Shapefile, Shapefile2, UK_Population, UK_Population_2021, UK_Education, UK_Education_2021)
+rm(UK_Income, UK_Income_2021, UK_energy_2024, UK_energy_2014, Shapefile, Shapefile2, UK_Population, UK_Population_2021, UK_Education, UK_Education_2021)
 
 

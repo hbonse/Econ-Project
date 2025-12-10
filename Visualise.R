@@ -47,6 +47,10 @@ plot(
   col = "blue",
   log = "y")
 
+#t-test time
+
+
+
 
 q <- quantile(data$'Total Generation Output', 0.99)
 
