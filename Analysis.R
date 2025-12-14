@@ -101,21 +101,25 @@ Combined_Data2 <- Analysis_Data_Super_Awesome %>%
   mutate(Median_Renewable_Generation = median(Total_Generation_Output, na.rm = TRUE)) %>%
   ungroup()
 
-ggplot(Combined_Data2, aes(x = Region_name, y = Total_Generation_Output, fill = Year)) +
-  geom_col() +
+ggplot(
+  Combined_Data2,
+  aes(x = Region_name, y = Total_Generation_Output,
+    fill = Year )
+) +
+  geom_col(position = "dodge") +
   scale_fill_manual(
-    values = c("2024" = "green", "2014" = "blue"),
-    name = "Year"
-  ) +
-  labs(
-    title = "Stacked CO₂ Emissions by Region (2014 + 2024)",
-    x = "Region (Ranked by Total Emissions)",
-    y = "Emissions (tons)"
+    values = c("2014" = "blue", "2024" = "green"),
+    name = "Year" ) +
+  labs(title = "Renewable Generation Output by Region",
+    subtitle = "Comparison between 2014 and 2024",
+    x = "Region",
+    y = "Generation Output"
   ) +
   theme_minimal(base_size = 12) +
   theme(
     axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
   )
+
 
 
 
