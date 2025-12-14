@@ -8,13 +8,16 @@ library(tidyverse)
 library(dplyr)
 
 # Assuming there are no missing values, we proceed to clean the data
-# Then Select desired columns and rename them for clarity
-
+# Then Select the desired columns and rename them for clarity
+# 1. Income Data (GDHI)
+# Select relevant variables and rename for clarity
 #1) Clean UK_Income data for 2023
 UK_income_clean <- UK_income %>%
   select('...2', 'Gross Disposable Household Income - GDHI (£m)', 'GDHI per head (£)')%>%
   rename('GDHI' = 'Gross Disposable Household Income - GDHI (£m)', 'GDHI_PH' = 'GDHI per head (£)', 'LAD code' = '...2')
 
+# 2. Population Data
+# Keep LAD code and mid-year population estimate
 #2) Clean UK_Population data
 UK_Population_clean <- UK_population %>%
   select('Code', 'Name', 'Mid-2024')%>%
@@ -25,11 +28,14 @@ UK_Age_clean <- UK_age %>%
   select('Code', 'Mid-2024')%>%
   rename('LAD code' = 'Code', 'Mean_age' = 'Mid-2024')
 
+# 3. Education Data
+# England & Wales: percentage already provided
 #3) Clean UK_Education data
 ew_education_clean <- ew_education %>%
   select('...2', '%...6')%>%
   rename('LAD code' = '...2', 'Batchalors_degree_or_higher_(%)' = '%...6',)
 
+# Scotland: calculate percentage manually
 s_education_clean <- s_education %>%
   select('Council Area 2019', '...3', '...9')%>%
   rename('Name' = 'Council Area 2019',)%>%
@@ -37,12 +43,15 @@ s_education_clean <- s_education %>%
   mutate('Batchalors_degree_or_higher_(%)' = (...9 / ...3) * 100) %>%
   select(-c('...9', '...3'))
 
+# Northern Ireland
 n_education_clean <- n_education %>%
   select('Geography code', 'Level 4 qualifications and above [note 6]')%>%
   rename('LAD code' = 'Geography code', 'Batchalors_degree_or_higher_(%)' = 'Level 4 qualifications and above [note 6]',)
 
 rm(ew_education, s_education, n_education)  
 
+# 4. Energy Capacity Data (2014 & 2024)
+# Clean renewable energy capacity variables
 #4) Clean UK_energy data for 2024
 UK_energy_2024_clean <- UK_energy_2024 %>%
   select('Local Authority Code [note 1]', 'Photovoltaics', 'Onshore Wind', 'Offshore Wind', 'Total')%>%
