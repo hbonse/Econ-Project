@@ -47,8 +47,10 @@ Combined_Data <- Combined_Data %>%
       .cols = matches("Wind|Solar|Hydro|Biomass|Generation|MWh|Capacity"),
       ~ as.numeric(stringr::str_replace_all(.x, ",", ""))
     )
-  )
-
+# Part 2: Construction of derived indicators ----
+# ***********************************************************
+# This section constructs per-capita and technology composition
+# indicators to allow comparison across regions of different sizes.
 
 Analysis_Data_Super_Awesome <- Combined_Data %>%
   mutate(
