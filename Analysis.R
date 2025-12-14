@@ -1,3 +1,4 @@
+# Part 0: Load required libraries ----
 #time to for analysis
 # Load necessary libraries
 library(tidyverse)
@@ -19,8 +20,15 @@ install.packages("plm")
 install.packages("spatialreg")
 
 
-
-
+# Part 1: Cleaning energy generation variables ----
+# ***********************************************************
+# Energy generation variables are imported as character strings
+# and contain suppressed values coded as "[X]" as well as NA values.
+#
+# Assumption:
+# Suppressed or missing values are interpreted as zero recorded
+# generation. This avoids dropping regions from the analysis,
+# but may understate true output if suppression is systematic.
 Combined_Data <- Combined_Data %>%
   mutate(
     across(
@@ -31,8 +39,8 @@ Combined_Data <- Combined_Data %>%
 Combined_Data[Combined_Data == "[X]"] <- 0.0
 Combined_Data[is.na(Combined_Data)] <- 0.0
 
-
-
+# Convert energy-related variables to numeric format
+# Commas are removed prior to conversion to avoid coercion errors
 Combined_Data <- Combined_Data %>%
   mutate(
     across(
@@ -74,9 +82,10 @@ summary_stats <- Analysis_Data_Super_Awesome %>%
 
 
 
-
-### Time scale graph showing total generation output by region for 2014 and 2024
-
+# Part 3: Regional comparison of renewable generation ----
+# ***********************************************************
+# This figure compares renewable generation output across regions
+# in 2014 and 2024 to illustrate spatial differences and changes over time.
 
 Combined_Data2 <- Analysis_Data_Super_Awesome %>%
   select(Region_name, total_gen_out_2014_mw, total_change_mw) %>%
