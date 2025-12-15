@@ -13,7 +13,9 @@ source("Clean_V2.R") #Cleans the data to make it is ready for merger
 
 source("Merge.R") #Merges all the clean data into one table
 
-source("Analysis_V2.R") #Analyses the data and creates visualisations)
+source("Analysis_OB1.R") #Analyses the data and creates visualisations)
+source("Analysis_OB2.R") #Analyses the data and creates visualisations)
+source("Analysis_OB3.R") #Analyses the data and creates visualisations)
 
 source("Mapping.R") #Creates visualisations for the report
 
