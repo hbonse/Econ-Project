@@ -10,7 +10,10 @@ combined_analysis<- combined_analysis%>%
     Total_Cap_Per_Person_2014 = Total_Capacity_2014 / Population_number,
     Total_Cap_Per_Person_2024 = Total_Capacity_2024 / Population_number)
 
-# Reshape data to long format for easier plotting
+# Reshape data into long format
+# Rationale:
+# Long-format data allows consistent plotting across years
+# and avoids manual duplication of ggplot layers.
 combined_analysis_long <- combined_analysis%>%
   pivot_longer(
     cols = matches("2014|2024"),
@@ -26,18 +29,27 @@ combined_analysis_long <- combined_analysis%>%
 # Check the structure of the data
 glimpse(combined_analysis)
 glimpse(combined_analysis_long)
-#looking good!!!(hopefully)
+# Part 1: Construction of per-capita capacity indicators ----
+# ***********************************************************
+# This section constructs per-capita renewable capacity measures
+# to enable meaningful comparison across local authorities
+# with different population sizes.
 
 # --- PART B: Descriptive Statistics and Visualisations ---
 
-#summery data section
+# summary data section
 summary_data <- combined_analysis%>%
   select(Name, GDHI_PH, Population_number, 
          Total_Capacity_2014, Total_Capacity_2024, 
          Total_Cap_Per_Person_2024)
 
-# Create a summary table by LA
-# This calculates Mean and SD for Income and 2024 Capacity
+# Part 2: Descriptive statistics ----
+# ***********************************************************
+# This section summarises key socio-economic and energy
+# characteristics at the local authority level.
+# The table reports average income and renewable capacity
+# levels to provide baseline context for later analysis.
+
 summary_table <- summary_data %>%
   group_by(Name) %>%
   summarise(
@@ -52,9 +64,6 @@ summary_table <- summary_data %>%
 
 # View the summary table
 print(summary_table)
-
-
-
 
 
 write_csv(summary_table, "Table1_Summary_Statistics.csv")
@@ -75,7 +84,11 @@ plot1 <- combined_analysis_long %>%
     x = "Region"
   ) +
   theme_minimal()
-#need to make it more presentable
+# Part 3: Regional evolution of renewable capacity ----
+# ***********************************************************
+# This figure compares mean total renewable capacity
+# across regions in 2014 and 2024 to illustrate spatial
+# divergence and convergence patterns.
 
 
 # Export Plot 1
@@ -129,7 +142,7 @@ combined_correlations <- grid.arrange(plot3, plot4, ncol = 2)
 ggsave("Figure3_SocioEco_Correlations.png", plot = combined_correlations, width = 12, height = 5)
 
 
-# --- PART 3: Regression Analysis ---
+# --- Part 4: Regression Analysis ---
 
 #scale Income (divide by 1000) to make coefficients more readable
 model <- lm(Total_Cap_Per_Person_2024 ~ I(GDHI_PH/1000) + `Batchalors_degree_or_higher_(%)`, data = combined_analysis)
