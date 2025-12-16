@@ -29,7 +29,7 @@ ob3_data <- Combined_Data %>%
     n = n()
   )
 #export to csv
-write.csv(ob3_data, "output/ob3_summary_by_income_group.csv", row.names = FALSE)
+write.csv(ob3_data, "output/OB3/ob3_summary_by_income_group.csv", row.names = FALSE)
 
 #scatter plots and linear regression lines
 # Income vs per-capita renewable capacity
@@ -42,7 +42,7 @@ ggplot(Combined_Data, aes(x = GDHI_PH, y = total_pc_2024)) +
     title = "Income and\nRenewable Energy Capacity"
   )
 #export
-ggsave("output/ob3_income_vs_renewable_capacity.png", width = 8, height = 6)
+ggsave("output/OB3/ob3_income_vs_renewable_capacity.png", width = 8, height = 6)
 
 # Education vs per-capita renewable capacity
 ggplot(Combined_Data, aes(
@@ -57,7 +57,7 @@ ggplot(Combined_Data, aes(
     title = "Education and Renewable\nEnergy Capacity"
   )
 #export
-ggsave("output/ob3_education_vs_renewable_capacity.png", width = 8, height = 6)
+ggsave("output/OB3/ob3_education_vs_renewable_capacity.png", width = 8, height = 6)
 
 # Age vs per-capita renewable capacity
 ggplot(Combined_Data, aes(
@@ -72,7 +72,7 @@ ggplot(Combined_Data, aes(
     title = "Age and Renewable\nEnergy Capacity"
   )
 #export
-ggsave("output/ob3_age_vs_renewable_capacity.png", width = 8, height = 6)
+ggsave("output/OB3/ob3_age_vs_renewable_capacity.png", width = 8, height = 6)
 
 
 # 3) Linear regression analysis
@@ -102,7 +102,7 @@ stargazer(
   omit.stat = c("f", "ser"),
   digits = 3
 )
-# Export as a text file
+# Export as a html file - to put in report
 stargazer(
   m1, m2, m3,
   type = "html",
@@ -115,7 +115,8 @@ stargazer(
   ),
   omit.stat = c("f", "ser"),
   digits = 3,
-  out = "output/ob3_regression_results.html"
+  out = "output/OB3/ob3_regression_results.html"
 )
 
+rm(m1, m2, m3, m4, ob3_data)
 #End of file

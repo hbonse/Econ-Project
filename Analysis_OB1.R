@@ -14,11 +14,11 @@ library("dplyr")
 library("tidyr")
 library("knitr")
  #2) Load the combined data
-Combined_Data <- read.csv("data/Combined_Data.csv")
+#Combined_Data <- read.csv("data/Combined_Data.csv")
 
 # 3) Analysis of Renewable Energy Data
 # summary statistics - useful for initial analysis
-summery_table <- Combined_Data %>%
+ob1_summery_table <- Combined_Data %>%
   summarise(
     mean_2014 = mean(Total_Capacity_2014, na.rm = TRUE),
     median_2014 = median(Total_Capacity_2014, na.rm = TRUE),
@@ -40,8 +40,9 @@ summery_table <- Combined_Data %>%
   pivot_wider(names_from = Statistic, 
               values_from = value)
 # Save the table as a CSV to put in report
-write.csv(summery_table, "output/summary_table_2014_2024.csv", row.names = FALSE)
+write.csv(ob1_summery_table, "output/OB1/summary_table_2014_2024.csv", row.names = FALSE)
 
+rm(ob1_summery_table)
 
 # histogram of total renewable capacity in 2024
 ggplot(Combined_Data, aes(x = Total_Capacity_2024)) +
@@ -51,7 +52,7 @@ ggplot(Combined_Data, aes(x = Total_Capacity_2024)) +
     y = "Number of Local Authorities",
     title = "Distribution of Total\nRenewable Capacity (2024)"
   )
-ggsave("output/histogram_total_capacity_2024.png", width = 8, height = 6)
+ggsave("output/OB1/histogram_total_capacity_2024.png", width = 8, height = 6)
 
 # boxplots comparing renewable capacity by technology in 2024
 Combined_Data %>%
@@ -69,7 +70,7 @@ Combined_Data %>%
     y = "Renewable Capacity (MW)",
     title = "Renewable Capacity\nby Technology (2024)"
   )
-ggsave("output/histogram_Renewable_capacity_by_type_2024.png", width = 8, height = 6)
+ggsave("output/OB1/histogram_Renewable_capacity_by_type_2024.png", width = 8, height = 6)
 
 
 # boxplots comparing total renewable capacity between 2014 and 2024
@@ -87,7 +88,7 @@ Combined_Data %>%
     y = "Total Renewable Capacity (MW)",
     title = "Change in Renewable Capacity\nBetween 2014 and 2024"
   )
-ggsave("output/histogram_Renewable_capacity_2014-2024.png", width = 8, height = 6)
+ggsave("output/OB1/histogram_Renewable_capacity_2014-2024.png", width = 8, height = 6)
 
 # boxplots comparing growth in renewable capacity by technology between 2014 and 2024
 Combined_Data <- Combined_Data %>%
@@ -112,6 +113,6 @@ Combined_Data %>%
     y = "Capacity Growth (MW)",
     title = "Growth in Renewable Capacity\nby Technology (2014–2024)"
   )
-ggsave("output/histogram_Renewable_growth_2014-2024.png", width = 8, height = 6)
+ggsave("output/OB1/histogram_Renewable_growth_2014-2024.png", width = 8, height = 6)
 
 #End of Analysis_OB1.R

@@ -35,7 +35,7 @@ ggplot(Combined_Data) +
   ) +
   theme_minimal()
 #export to png
-ggsave("output/per_capita_2024_map.png", width = 8, height = 6)
+ggsave("output/OB2/per_capita_2024_map.png", width = 8, height = 6)
 
 ob2_summary_table <- Combined_Data %>%
   arrange(desc(total_pc_2024)) %>%
@@ -59,7 +59,7 @@ ggplot(Combined_Data, aes(x = total_pc_2014, y = total_pc_2024)) +
   )
 #certain local authorities were excluded due to missing data for 2014
 #export
-ggsave("output/persistence_per_capita_scatter.png", width = 8, height = 6)
+ggsave("output//OB2persistence_per_capita_scatter.png", width = 8, height = 6)
 
 # Now we can look at the individual technologies per capita
 
@@ -71,8 +71,8 @@ Combined_Data <- Combined_Data %>%
   )
 
 
-#per capacity wind map
-ggplot(Combined_Data %>% left_join(Combined_Data, by = "Name")) +
+#per capacity Onshore wind map
+ggplot(Combined_Data) + 
   geom_sf(aes(fill = onshore_pc_2024), colour = NA) +
   scale_fill_viridis_c() +
   labs(
@@ -81,9 +81,9 @@ ggplot(Combined_Data %>% left_join(Combined_Data, by = "Name")) +
   ) +
   theme_minimal()
 #export
-ggsave("output/per_capita_onshore_2024_map.png", width = 8, height = 6)
+ggsave("output/OB2/per_capita_onshore_2024_map.png", width = 8, height = 6)
 #per capacity solar map
-ggplot(Combined_Data %>% left_join(Combined_Data, by = "Name")) +
+ggplot(Combined_Data) +
   geom_sf(aes(fill = pv_pc_2024), colour = NA) +
   scale_fill_viridis_c() +
   labs(
@@ -92,9 +92,9 @@ ggplot(Combined_Data %>% left_join(Combined_Data, by = "Name")) +
   ) +
   theme_minimal()
 #export
-ggsave("output/per_capita_solar_2024_map.png", width = 8, height = 6)
+ggsave("output/OB2/per_capita_solar_2024_map.png", width = 8, height = 6)
 #per capacity offshore wind map
-ggplot(Combined_Data %>% left_join(Combined_Data, by = "Name")) +
+ggplot(Combined_Data) +
   geom_sf(aes(fill = offshore_pc_2024), colour = NA) +
   scale_fill_viridis_c() +
   labs(
@@ -103,6 +103,7 @@ ggplot(Combined_Data %>% left_join(Combined_Data, by = "Name")) +
   ) +
   theme_minimal()
 #export
-ggsave("output/per_capita_offshore_2024_map.png", width = 8, height = 6)
+ggsave("output/OB2/per_capita_offshore_2024_map.png", width = 8, height = 6)
 
+rm(ob2_summary_table)
 #End of Analysis_OB2.R
