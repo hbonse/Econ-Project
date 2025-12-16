@@ -1,5 +1,6 @@
 library("tidyverse")
 
+#summary statistics
 Combined_Data %>%
   summarise(
     mean_2014 = mean(Total_Capacity_2014, na.rm = TRUE),
