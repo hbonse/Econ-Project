@@ -89,7 +89,7 @@ rm(UK_income, UK_population, UK_age, UK_energy_2024, UK_energy_2014, Shapefile, 
 missing_values_check <- function(data) {
   sum(is.na(data))
 }
-datasets <- list(UK_income_clean, UK_Population_clean, UK_Age_clean, ew_education_clean, s_education_clean, n_education_clean, UK_energy_2024_clean, UK_energy_2014_clean, Shapefile_clean)
+datasets <- list(UK_income_clean, UK_Population_clean, UK_Age_clean, ew_education_clean, s_education_clean, n_education_clean, UK_energy_2024_clean, UK_energy_2014_clean, shapefile_clean)
 missing_values <- sapply(datasets, missing_values_check)
 missing_values
 # Print missing values for each dataset
@@ -106,12 +106,15 @@ UK_income_clean <- UK_income_clean %>%
 rm(missing_income)
 
 # Recheck missing values after cleaning
-datasets <- list(UK_income_clean, UK_Population_clean, UK_Age_clean, ew_education_clean, s_education_clean, n_education_clean, UK_energy_2024_clean, UK_energy_2014_clean, Shapefile_clean)
+datasets <- list(UK_income_clean, UK_Population_clean, UK_Age_clean, ew_education_clean, s_education_clean, n_education_clean, UK_energy_2024_clean, UK_energy_2014_clean, shapefile_clean)
 missing_values <- sapply(datasets, missing_values_check)
 missing_values
 # Print missing values for each dataset
 for (i in 1:length(datasets)) {
   cat("Missing values in dataset", i, ":", missing_values[i], "\n")
 }
+
+# Remove any last remaining unneded file
+rm(datasets, missing_values, missing_values_check, i)
 # Now all datasets should have 0 missing values
 # We are ready to merge
