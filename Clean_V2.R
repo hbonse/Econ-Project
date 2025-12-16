@@ -72,20 +72,16 @@ UK_energy_2014_clean <- UK_energy_2014 %>%
   select('Local Authority Code [note 1]', 'Local Authority Name', 'Photovoltaics', 'Onshore Wind', 'Offshore Wind', 'Total')%>%
   rename('LAD code' = 'Local Authority Code [note 1]', 'Name' = 'Local Authority Name', 'Total_Capacity_2014' = 'Total', 'Photovoltaics_2014' = 'Photovoltaics', 'Onshore_Wind_2014' = 'Onshore Wind', 'Offshore_Wind_2014' = 'Offshore Wind')
 
-# 2g) Clean Shapefile data
+# 2g) Clean Shape file data
 shapefile_clean <- Shapefile %>%
   select(LAD25CD, LAD25NM, geometry)%>%
   rename('LAD code' = 'LAD25CD')
 
-# 3)remove the data that is not needed anymore to free up memory
+# 3)remove the data that is not needed any more to free up memory
 rm(UK_income, UK_population, UK_age, UK_energy_2024, UK_energy_2014, Shapefile, ew_education, s_education, n_education)
-
 
 # 3) missing data check
 # Check for missing values in the cleaned datasets
-
-
-
 missing_values_check <- function(data) {
   sum(is.na(data))
 }
@@ -104,7 +100,6 @@ print(missing_income) #we can see 4 rows with no values
 UK_income_clean <- UK_income_clean %>%
   slice(-c(373, 374, 375, 376))  # removes the last 4 rows which are blank
 rm(missing_income)
-
 # Recheck missing values after cleaning
 datasets <- list(UK_income_clean, UK_Population_clean, UK_Age_clean, ew_education_clean, s_education_clean, n_education_clean, UK_energy_2024_clean, UK_energy_2014_clean, shapefile_clean)
 missing_values <- sapply(datasets, missing_values_check)
@@ -113,8 +108,7 @@ missing_values
 for (i in 1:length(datasets)) {
   cat("Missing values in dataset", i, ":", missing_values[i], "\n")
 }
-
-# Remove any last remaining unneded file
+# Remove any last remaining unneeded files
 rm(datasets, missing_values, missing_values_check, i)
 # Now all datasets should have 0 missing values
 # We are ready to merge

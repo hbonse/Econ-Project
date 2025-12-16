@@ -22,4 +22,5 @@ source("Analysis_OB1.R") #Analyses the data and creates visualisations for OB1
 source("Analysis_OB2.R") #Analyses the data and creates visualisations for OB2
 source("Analysis_OB3.R") #Analyses the data and creates visualisations for OB3
 
-source("Mapping.R") #Creates visualisations for the report
+#All done! the outputs can be found in the output folder
+print("All scripts have been run successfully! Check the output folder for results.")
