@@ -1,5 +1,5 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Title: Renewable Energy Generation Distribution in the UK
+# Title: Renewable Energy Capacity Distribution in the UK
 #
 # Purpose: To merge all the data into 1 table
 #
@@ -8,13 +8,19 @@
 # Part 3: Merging the data
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# 1) for ease we combine the England/Wales and Northern Ireland education data first
-# this will make the final merge step easier, we can't add Scotland yet as it dosen't have LAD codes
-# Education_Data_Merger_EWN
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 1) Combined Education Data
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# For ease England/Wales and Northern Ireland education data can be combined dirrectly
+# this will make the final merge step easier, Scotland can't be added yet as it doesn't have LAD codes
+
+# Education data for merger England and Wales
 ewn_education <- bind_rows(ew_education_clean, n_education_clean)
 rm(ew_education_clean, n_education_clean)
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 2) Now we can merge all the cleaned datasets into one table
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# We will use left joins to keep all the local authorities in the population data
 Combined_Data <- UK_Population_clean %>%
   left_join(s_education_clean, by = "Name") %>% #No Lad_code so joined by name
   left_join(UK_income_clean, by = "LAD code")%>%

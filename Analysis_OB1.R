@@ -1,22 +1,33 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Title: Renewable Energy Generation Distribution in the UK
 #
-# Purpose: To merge all the data into 1 table
+# Purpose: Analyse the merged data for Objective 1
 #
 # Authors: Hugo Bonsey
+#
+# Outputs:
+#   - ob1_summary_table_2014_2024.csv
+#   - ob1_histogram_total_capacity_2024.png
+#   - ob1_histogram_Renewable_capacity_by_type_2024.png
+#   - ob1_histogram_Renewable_capacity_2014-2024.png
+#   - ob1_histogram_Renewable_growth_2014-2024.png
+#
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Part 4: Analysing the data for Objective 1
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # 1)load the libraries that will be used in this file
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 library("tidyverse")
 library("dplyr")
 library("tidyr")
 library("knitr")
- #2) Load the combined data
-#Combined_Data <- read.csv("data/Combined_Data.csv")
 
-# 3) Analysis of Renewable Energy Data
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 3) Get Summery statistics of main data
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # summary statistics - useful for initial analysis
 ob1_summery_table <- Combined_Data %>%
   summarise(
@@ -40,11 +51,15 @@ ob1_summery_table <- Combined_Data %>%
   pivot_wider(names_from = Statistic, 
               values_from = value)
 # Save the table as a CSV to put in report
-write.csv(ob1_summery_table, "output/OB1/summary_table_2014_2024.csv", row.names = FALSE)
+write.csv(ob1_summery_table, "output/OB1/ob1_summary_table_2014_2024.csv", row.names = FALSE)
 
 rm(ob1_summery_table)
 
-# histogram of total renewable capacity in 2024
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# 4) Visual Analysis
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# 4.1) Histogram:Total Renewable capacity in 2024
 ggplot(Combined_Data, aes(x = Total_Capacity_2024)) +
   geom_histogram(bins = 30, fill = "grey70", colour = "black") +
   labs(
@@ -52,9 +67,10 @@ ggplot(Combined_Data, aes(x = Total_Capacity_2024)) +
     y = "Number of Local Authorities",
     title = "Distribution of Total\nRenewable Capacity (2024)"
   )
-ggsave("output/OB1/histogram_total_capacity_2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_histogram_total_capacity_2024.png", width = 8, height = 6)
 
-# boxplots comparing renewable capacity by technology in 2024
+
+# 4.2) Box plot: Comparison of renewable capacity by technology in 2024
 Combined_Data %>%
   select(Photovoltaics_2024, Onshore_Wind_2024, Offshore_Wind_2024) %>%
   pivot_longer(
@@ -70,10 +86,10 @@ Combined_Data %>%
     y = "Renewable Capacity (MW)",
     title = "Renewable Capacity\nby Technology (2024)"
   )
-ggsave("output/OB1/histogram_Renewable_capacity_by_type_2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_histogram_Renewable_capacity_by_type_2024.png", width = 8, height = 6)
 
 
-# boxplots comparing total renewable capacity between 2014 and 2024
+# 4.3) Box plot: Comparison of total renewable capacity between 2014 and 2024
 Combined_Data %>%
   select(Total_Capacity_2014, Total_Capacity_2024) %>%
   pivot_longer(
@@ -88,16 +104,16 @@ Combined_Data %>%
     y = "Total Renewable Capacity (MW)",
     title = "Change in Renewable Capacity\nBetween 2014 and 2024"
   )
-ggsave("output/OB1/histogram_Renewable_capacity_2014-2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_histogram_Renewable_capacity_2014-2024.png", width = 8, height = 6)
 
-# boxplots comparing growth in renewable capacity by technology between 2014 and 2024
+
+# 4.4) Box plot: Comparison of growth in renewable capacity by technology between 2014 and 2024
 Combined_Data <- Combined_Data %>%
   mutate(
     pv_growth = Photovoltaics_2024 - Photovoltaics_2014,
     onshore_growth = Onshore_Wind_2024 - Onshore_Wind_2014,
     offshore_growth = Offshore_Wind_2024 - Offshore_Wind_2014
   )
-
 Combined_Data %>%
   select(pv_growth, onshore_growth, offshore_growth) %>%
   pivot_longer(
@@ -113,6 +129,6 @@ Combined_Data %>%
     y = "Capacity Growth (MW)",
     title = "Growth in Renewable Capacity\nby Technology (2014–2024)"
   )
-ggsave("output/OB1/histogram_Renewable_growth_2014-2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_histogram_Renewable_growth_2014-2024.png", width = 8, height = 6)
 
 #End of Analysis_OB1.R

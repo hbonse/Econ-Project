@@ -8,7 +8,7 @@
 #To ensure smooth running ensure all files in the project are closed
 
 #Libraries needed:
-install.packages(c("tidyverse", "readxl", "sf", "stargazer"))
+install.packages(c("tidyverse", "readxl", "sf", "stargazer", "ggrepel"))
 #restart as needed
 
 
@@ -34,7 +34,8 @@ source("Merge.R") #Merges all the clean data into one table
 # Part 4) Data Analysis
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #Doing Data Analysis
-options(warn = -1) #Turn off warnings for this section - due to missing data warning show, to turn on change value to 0
+options(warn = -1) 
+#Turn off warnings for this section - due to missing data for 2014 (explained in file) warning show, to turn on change value to 0
 source("Analysis_OB1.R") #Analyses the data and creates visualisations for OB1
 # This file will show warning messages after running, this is due to missing data for 2014 in some local authorities
 source("Analysis_OB2.R") #Analyses the data and creates visualisations for OB2
