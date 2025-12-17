@@ -67,7 +67,7 @@ ggplot(Combined_Data, aes(
   geom_smooth(method = "lm", se = FALSE) +
   labs(
     x = "Population with Bachelor’s Degree or Higher (%)",
-    y = "Per-Capita Renewable Capacity",
+    y = "Per Capita Renewable Capacity",
     title = "Education and Renewable\nEnergy Capacity"
   )
 #export
@@ -83,7 +83,7 @@ ggplot(Combined_Data, aes(
   geom_smooth(method = "lm", se = FALSE) +
   labs(
     x = "Population average age",
-    y = "Per-Capita Renewable Capacity",
+    y = "Per Capita Renewable Capacity",
     title = "Age and Renewable\nEnergy Capacity"
   )
 #export
@@ -114,7 +114,7 @@ stargazer(
   m1, m2, m3,
   type = "text",
   title = "Regression Results: Socio-Economic Correlates of Renewable Capacity",
-  dep.var.labels = "Per-Capita Renewable Capacity (MW per 1,000 people)",
+  dep.var.labels = "Per Capita Renewable Capacity (MW per 1,000 people)",
   covariate.labels = c(
     "Income per Head (£)",
     "Bachelor’s Degree or Higher (%)",

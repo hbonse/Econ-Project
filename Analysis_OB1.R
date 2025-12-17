@@ -8,9 +8,9 @@
 # Outputs:
 #   - ob1_summary_table_2014_2024.csv
 #   - ob1_histogram_total_capacity_2024.png
-#   - ob1_histogram_Renewable_capacity_by_type_2024.png
-#   - ob1_histogram_Renewable_capacity_2014-2024.png
-#   - ob1_histogram_Renewable_growth_2014-2024.png
+#   - ob1_bp_Renewable_capacity_by_type_2024.png
+#   - ob1_bp_Renewable_capacity_2014-2024.png
+#   - ob1_bp_Renewable_growth_2014-2024.png
 #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Part 4: Analysing the data for Objective 1
@@ -86,7 +86,7 @@ Combined_Data %>%
     y = "Renewable Capacity (MW)",
     title = "Renewable Capacity\nby Technology (2024)"
   )
-ggsave("output/OB1/ob1_histogram_Renewable_capacity_by_type_2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_bp_Renewable_capacity_by_type_2024.png", width = 8, height = 6)
 
 
 # 4.3) Box plot: Comparison of total renewable capacity between 2014 and 2024
@@ -102,9 +102,9 @@ Combined_Data %>%
   labs(
     x = "Year",
     y = "Total Renewable Capacity (MW)",
-    title = "Change in Renewable Capacity\nBetween 2014 and 2024"
+    title = "Change in Renewable Capacity\n(2014-2024)"
   )
-ggsave("output/OB1/ob1_histogram_Renewable_capacity_2014-2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_bp_Renewable_capacity_2014-2024.png", width = 8, height = 6)
 
 
 # 4.4) Box plot: Comparison of growth in renewable capacity by technology between 2014 and 2024
@@ -129,6 +129,6 @@ Combined_Data %>%
     y = "Capacity Growth (MW)",
     title = "Growth in Renewable Capacity\nby Technology (2014–2024)"
   )
-ggsave("output/OB1/ob1_histogram_Renewable_growth_2014-2024.png", width = 8, height = 6)
+ggsave("output/OB1/ob1_bp_Renewable_growth_2014-2024.png", width = 8, height = 6)
 
 #End of Analysis_OB1.R

@@ -67,7 +67,7 @@ ggplot(Combined_Data) +
   scale_fill_viridis_c() +
   labs(
     fill = "MW per 1,000 people",
-    title = "Per-Capita Renewable Capacity\nby Local Authority (2024)"
+    title = "Per Capita Renewable Capacity\nby Local Authority (2024)"
   ) +
   theme_minimal()
 #export to png
@@ -80,7 +80,7 @@ ggplot(Combined_Data) +
   scale_fill_viridis_c() +
   labs(
     fill = "MW per 1,000 people",
-    title = "Per-Capita Onshore Wind\nCapacity by Local Authority (2024)"
+    title = "Per Capita Onshore Wind\nCapacity by Local Authority (2024)"
   ) +
   theme_minimal()
 #export
@@ -92,7 +92,7 @@ ggplot(Combined_Data) +
   scale_fill_viridis_c() +
   labs(
     fill = "MW per 1,000 people",
-    title = "Per-Capita Solar Capacity\nby Local Authority (2024)"
+    title = "Per Capita Solar Capacity\nby Local Authority (2024)"
   ) +
   theme_minimal()
 #export
@@ -104,7 +104,7 @@ ggplot(Combined_Data) +
   scale_fill_viridis_c() +
   labs(
     fill = "MW per 1,000 people",
-    title = "Per-Capita Offshore Wind\nCapacity by Local Authority (2024)"
+    title = "Per Capita Offshore Wind\nCapacity by Local Authority (2024)"
   ) +
   theme_minimal()
 #export
@@ -141,8 +141,8 @@ ggplot(Combined_Data, aes(x = onshore_pc_2014, y = onshore_pc_2024)) +
   geom_point(alpha = 0.6) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
   labs(
-    x = "Per-Capita Onshore Wind Capacity (2014)",
-    y = "Per-Capita Onshore Wind Capacity (2024)",
+    x = "Per Capita Onshore Wind Capacity (2014)",
+    y = "Per Capita Onshore Wind Capacity (2024)",
     title = "Persistence of Onshore Wind\nEnergy Hotspots"
   )
 #export
@@ -153,8 +153,8 @@ ggplot(Combined_Data, aes(x = pv_pc_2014, y = pv_pc_2024)) +
   geom_point(alpha = 0.6) +
   geom_abline(slope = 1, intercept = 0, linetype =  "dashed") +
   labs( 
-    x = "Per-Capita Solar Capacity (2014)",
-    y = "Per-Capita Solar Capacity (2024)",
+    x = "Per Capita Solar Capacity (2014)",
+    y = "Per Capita Solar Capacity (2024)",
     title = "Persistence of Solar\nEnergy Hotspots"
   )
 #export
@@ -165,8 +165,8 @@ ggplot(Combined_Data,  aes(x = offshore_pc_2014, y = offshore_pc_2024)) +
   geom_point(alpha = 0.6) +
   geom_abline(slope = 1, intercept = 0, linetype = "dashed") +
   labs(
-    x = "Per-Capita Offshore Wind Capacity (2014)",
-    y = "Per-Capita Offshore Wind Capacity (2024)",
+    x = "Per Capita Offshore Wind Capacity (2014)",
+    y = "Per Capita Offshore Wind Capacity (2024)",
     title = "Persistence of Offshore Wind\nEnergy Hotspots"
   )
 #export

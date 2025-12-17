@@ -39,7 +39,6 @@ Combined_Data <- UK_Population_clean %>%
   rename('LAD code' = 'LAD code.x')
   
   #the shapefile will be joined later, as for now it can cause issues with CSV files
-
 #Now all the data is in one nice sheet we can remove the rest
 rm(UK_income_clean, UK_Population_clean, UK_energy_2014_clean, UK_energy_2024_clean, UK_Age_clean, s_education_clean, ewn_education)
 # We can now write this to a CSV for easy access later
