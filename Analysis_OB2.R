@@ -3,8 +3,6 @@
 #
 # Purpose: To analyse the merged data for Objective 2
 #
-# Authors: Hugo Bonsey
-#
 # Output:
 #   - ob2_per_capita_2024_map.png
 #   - ob2_top10_per_capita_2024.csv

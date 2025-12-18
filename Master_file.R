@@ -1,14 +1,17 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Master File
 # Purpose : To run all scripts in order
-# Author  : Hugo Bonsey
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #Welcome to the master file
 #This file is designed to run all the relevant scripts in order
 #To ensure smooth running ensure all files in the project are closed
 
 #Libraries needed:
-install.packages(c("tidyverse", "readxl", "sf", "stargazer", "ggrepel"))
+install.packages("tidyverse")
+install.packages("readxl")
+install.packages("sf")
+install.packages("stargazer")
+install.packages("ggrepel")
 #restart as needed
 
 

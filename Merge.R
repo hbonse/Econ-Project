@@ -2,8 +2,6 @@
 # Title: Renewable Energy Capacity Distribution in the UK
 #
 # Purpose: To merge all the data into 1 table
-#
-# Authors: Hugo Bonsey
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Part 3: Merging the data
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

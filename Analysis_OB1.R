@@ -3,8 +3,6 @@
 #
 # Purpose: Analyse the merged data for Objective 1
 #
-# Authors: Hugo Bonsey
-#
 # Outputs:
 #   - ob1_summary_table_2014_2024.csv
 #   - ob1_histogram_total_capacity_2024.png

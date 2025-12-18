@@ -3,8 +3,6 @@
 #
 # Purpose: To Analyse the merged data for Objective 3
 #
-# Authors: Hugo Bonsey
-#
 # Outputs:
 #   - ob3_summary_by_income_group.csv
 #   - ob3_income_vs_renewable_capacity.png

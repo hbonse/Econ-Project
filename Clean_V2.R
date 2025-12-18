@@ -2,8 +2,6 @@
 # Title: Renewable Energy Capacity Distribution in the UK
 #
 # Purpose: To Clean all the needed data to prepare it for merging
-#
-# Authors: Hugo Bonsey
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Part 2: Preparing the data for merging
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
